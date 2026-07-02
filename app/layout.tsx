@@ -13,8 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jikky | Web Developer",
-  description: "Web Developer Portfolio showcasing projects and skills.",
+  title: 'Jikky | Full-Stack Developer Portfolio',
+  description: 'Portfolio of Jikky, a Full-Stack Software Developer specialized in building high-performance web and mobile applications.',
+  keywords: ['Jikky', 'jikky.my.id', 'Full-Stack Developer', 'Software Engineer Indonesia', 'Flutter', 'Go', 'Next.js'],
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
