@@ -1,7 +1,7 @@
 export default function Footer() {
   const socialEndpoints = [
-    { target: 'GitHub', endpoint: 'https://github.com' },
-    { target: 'LinkedIn', endpoint: 'https://linkedin.com' },
+    { target: 'GitHub', endpoint: 'https://github.com/jkz1' },
+    { target: 'LinkedIn', endpoint: 'https://www.linkedin.com/in/jikky-jikky-61603a30b' },
   ];
 
   return (

@@ -2,8 +2,8 @@
 
 export default function Hero() {
   return (
-    <section 
-      id="hero" 
+    <section
+      id="hero"
       className="relative min-h-[92vh] flex flex-col justify-center bg-zinc-950 text-zinc-100 px-6 overflow-hidden"
     >
       {/* DECORATION: Seamless Engineering Grid */}
@@ -17,10 +17,10 @@ export default function Hero() {
       <div className="absolute top-12 right-12 font-mono text-[10px] text-zinc-800 select-none font-light">+</div >
 
       <div className="relative max-w-4xl mx-auto w-full z-10">
-        
+
         {/* Balanced Grid Architecture */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center w-full">
-          
+
           {/* Left Columns: Text Content Stack */}
           <div className="md:col-span-2 space-y-8">
             {/* Availability Badge */}
@@ -34,7 +34,7 @@ export default function Hero() {
               <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-zinc-100">
                 Hi, I'm <span className="text-white font-extrabold tracking-tighter">Jikky</span>.
               </h1>
-              
+
               <div className="flex items-center gap-4">
                 <p className="text-2xl sm:text-3xl font-medium text-zinc-400 font-mono tracking-tight shrink-0">
                   Full-Stack Developer
@@ -45,7 +45,7 @@ export default function Hero() {
 
             {/* Short description */}
             <p className="text-base sm:text-lg text-zinc-400 leading-relaxed">
-              I architecture efficient, clean, and highly stable applications. 
+              I architecture efficient, clean, and highly stable applications.
               Specialized in bridging powerful backend systems with fast, minimalist user interfaces.
             </p>
 
@@ -72,22 +72,22 @@ export default function Hero() {
               <div className="absolute top-0 left-0 text-[9px] font-mono text-zinc-600 -translate-y-4 select-none">
                 // sys_graphics_render
               </div>
-              
+
               {/* Outer Container Frame */}
               <div className="w-full h-full rounded-xl bg-zinc-900/20 border border-zinc-800/80 backdrop-blur-sm flex items-center justify-center relative overflow-hidden group-hover:border-zinc-600 transition-all duration-300 shadow-2xl shadow-black/40">
                 {/* Crosshair guidelines embedded into the layout background */}
                 <div className="absolute inset-4 border border-dashed border-zinc-900/60 font-mono text-[9px] text-zinc-700 flex items-center justify-center select-none group-hover:border-zinc-800 group-hover:text-zinc-500 transition-colors">
-                  canvas_box // 240×240
+                  <img src="/images/2.jpeg" width="240" height="240" alt="Hero Graphic" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
                 </div>
-                
+
                 {/* Micro tech indicators in frame corners */}
                 <div className="absolute bottom-2 right-3 font-mono text-[8px] text-zinc-700 tracking-tighter select-none">
                   LOC: 0x7FFF
                 </div>
 
-                <span className="text-5xl text-zinc-700 relative z-10 filter grayscale opacity-30 group-hover:opacity-60 transition-all duration-300 transform group-hover:scale-105">
+                {/* <span className="text-5xl text-zinc-700 relative z-10 filter grayscale opacity-30 group-hover:opacity-60 transition-all duration-300 transform group-hover:scale-105">
                   💻
-                </span>
+                </span> */}
               </div>
             </div>
           </div>

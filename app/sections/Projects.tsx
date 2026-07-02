@@ -74,7 +74,7 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Action Syntax Links */}
+              {/* Action Syntax Links
               <div className="flex gap-5 font-mono text-xs">
                 <a 
                   href={project.liveLink}
@@ -90,7 +90,7 @@ export default function Projects() {
                   <span className="text-zinc-700 group-hover/btn:text-zinc-500 transition-colors">→</span>
                   <span>source_code()</span>
                 </a>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
