@@ -8,7 +8,7 @@ export default function Skills() {
     {
       index: '02',
       category: 'frameworks_libraries',
-      skills: ['Next.js', 'React.js', 'Flutter', 'Laravel', 'Filament', 'Tailwind CSS'],
+      skills: ['Next.js', 'React.js', 'Express.js', 'Flutter', 'Laravel', 'Filament', 'Tailwind CSS'],
     },
     {
       index: '03',
@@ -19,16 +19,16 @@ export default function Skills() {
 
   return (
     <section id="skills" className="relative py-28 bg-zinc-950 text-zinc-100 px-6 border-t border-zinc-900 overflow-hidden">
-      
+
       {/* DECORATION: Blueprint Grid Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent)] opacity-70 pointer-events-none" />
-      
+
       {/* DECORATION: CAD Blueprint Corner Plus Markers */}
       <div className="absolute top-12 left-12 font-mono text-[10px] text-zinc-800 select-none">+</div >
       <div className="absolute top-12 right-12 font-mono text-[10px] text-zinc-800 select-none">+</div >
 
       <div className="relative max-w-4xl mx-auto w-full z-10">
-        
+
         {/* Section Heading */}
         <div className="flex items-center gap-4 mb-16">
           <div className="space-y-1 shrink-0">
@@ -41,8 +41,8 @@ export default function Skills() {
         {/* Dynamic Skill Grid Node Matrix */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {skillNodes.map((node) => (
-            <div 
-              key={node.category} 
+            <div
+              key={node.category}
               className="p-6 rounded-xl bg-zinc-900/20 border border-zinc-800/80 backdrop-blur-sm relative group hover:border-zinc-600 transition-all duration-300 shadow-xl shadow-black/20"
             >
               {/* DECORATION: Top Right Technical Category Label */}
