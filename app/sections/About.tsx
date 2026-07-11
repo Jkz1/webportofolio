@@ -25,15 +25,13 @@ export default function About() {
           {/* Left Column: Focused Bio */}
           <div className="md:col-span-3 space-y-6 text-zinc-400 text-base leading-relaxed relative">
             <p>
-              I am a software developer dedicated to building efficient, reliable, and production-ready applications.
-              My approach focuses on clean architecture, optimal system design, and creating interfaces that feel intuitive and responsive.
+              I am a full-stack developer dedicated to building efficient, reliable, and production-ready applications. My approach focuses on clean architecture, optimal system design, and creating intuitive, cross-platform interfaces
             </p>
             <p>
-              Whether engineering robust backends or fine-tuning interactive web applications,
-              I aim for code that scales and stays highly maintainable over long lifecycles.
+              Whether I am structuring robust backend databases or refining interactive frontends, my goal is to engineer scalable, maintainable solutions built for long-term success.
             </p>
             <p>
-              I focus heavily on remote and freelance collaboration, helping teams transform technical specifications into deployed, high-performance software products.
+              I focus on remote and freelance collaboration, helping teams transform technical specifications into deployed, high-performance software products.
             </p>
           </div>
 

@@ -50,10 +50,10 @@ export default function Hero() {
       className="relative min-h-[92vh] flex flex-col justify-center bg-zinc-950 text-zinc-100 px-6 overflow-hidden"
     >
       {/* DECORATION: Seamless Engineering Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_60%,transparent)] opacity-70 pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_60%_at_50%_50%,#000_60%,transparent)] opacity-70 pointer-events-none" />
 
       {/* DECORATION: Ambient Glow */}
-      <div className="absolute top-1/3 right-1/4 w-[35rem] h-[35rem] bg-zinc-900/20 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-140 h-140 bg-zinc-900/20 rounded-full blur-[130px] pointer-events-none" />
 
       {/* DECORATION: CAD Blueprint Corner Plus Markers */}
       <div className="absolute top-12 left-12 font-mono text-[10px] text-zinc-800 select-none font-light">+</div >
@@ -65,27 +65,27 @@ export default function Hero() {
           {/* Main Header Group */}
           <div className="space-y-4">
             {/* Line 1: Name */}
-            <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-zinc-100 font-mono min-h-[48px] sm:min-h-[72px]">
+            <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-zinc-100 font-mono min-h-12 sm:min-h-18">
               {line1}
               {!showCursor2 && (
-                <span className="inline-block w-[3px] h-[40px] sm:h-[55px] ml-1 bg-zinc-100 animate-[pulse_0.8s_infinite] translate-y-1" />
+                <span className="inline-block w-0.75 h-10 sm:h-13.75 ml-1 bg-zinc-100 animate-[pulse_0.8s_infinite] translate-y-1" />
               )}
             </h1>
             
             {/* Line 2: Subtitle & Trace Line */}
             <div className="flex items-center gap-4 h-10">
-              <p className="text-xl sm:text-2xl font-semibold text-zinc-400 font-mono tracking-tight shrink-0 min-h-[32px]">
+              <p className="text-xl sm:text-2xl font-semibold text-zinc-400 font-mono tracking-tight shrink-0 min-h-8">
                 {showCursor2 && <span className="text-zinc-600 mr-2 font-normal">{`>`}</span>}
                 {line2}
                 {showCursor2 && (
-                  <span className="inline-block w-[10px] h-[18px] sm:h-[22px] ml-1 bg-zinc-400 animate-[pulse_0.8s_infinite] translate-y-0.5" />
+                  <span className="inline-block w-2.5 h-4.5 sm:h-5.5 ml-1 bg-zinc-400 animate-[pulse_0.8s_infinite] translate-y-0.5" />
                 )}
               </p>
 
               {/* SYSTEM TRACE LINE - Expands smoothly after typing finishes */}
-              <div className="relative flex-1 hidden sm:block h-[1px] overflow-hidden">
+              <div className="relative flex-1 hidden sm:block h-px overflow-hidden">
                 <div 
-                  className="absolute inset-0 bg-gradient-to-r from-zinc-700 via-zinc-800 to-transparent transition-all duration-[800ms] ease-in-out origin-left"
+                  className="absolute inset-0 bg-linear-to-r from-zinc-700 via-zinc-800 to-transparent transition-all duration-800 ease-in-out origin-left"
                   style={{ transform: isIgnited ? 'scaleX(1)' : 'scaleX(0)' }}
                 />
               </div>
@@ -104,8 +104,7 @@ export default function Hero() {
           <p className={`text-base sm:text-lg text-zinc-400 leading-relaxed transition-all duration-700 delay-500 ${
             isIgnited ? 'opacity-100' : 'opacity-0'
           }`}>
-            I architecture efficient, clean, and highly stable applications. 
-            Specialized in bridging powerful backend systems with fast, minimalist user interfaces.
+            I am a full-stack developer dedicated to building efficient, scalable, and cross-platform applications. Backed by a strong foundation in software engineering, I specialize in turning complex technical requirements into intuitive, high-performance digital products for international teams.
           </p>
 
           {/* Tactile Buttons - Fades in at the end */}
