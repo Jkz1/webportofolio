@@ -6,6 +6,7 @@ import Blog from "./sections/Blog";
 import Contact from "./sections/Contact";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import ScrollReveal from "./components/scrollReveal";
 
 export default function Home() {
   return (
@@ -13,11 +14,19 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Skills />
-        <Projects />
+        <ScrollReveal>
+          <About />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Skills />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Projects />
+        </ScrollReveal>
         {/* <Blog /> */}
-        <Contact />
+        <ScrollReveal>
+          <Contact />
+        </ScrollReveal>
       </main>
       <Footer />
     </div>

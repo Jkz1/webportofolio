@@ -104,7 +104,7 @@ export default function Hero() {
           <p className={`text-base sm:text-lg text-zinc-400 leading-relaxed transition-all duration-700 delay-500 ${
             isIgnited ? 'opacity-100' : 'opacity-0'
           }`}>
-            I am a full-stack developer dedicated to building efficient, scalable, and cross-platform applications. Backed by a strong foundation in software engineering, I specialize in turning complex technical requirements into intuitive, high-performance digital products for international teams.
+            I am a full-stack developer dedicated to building efficient, scalable, and cross-platform applications. Backed by a strong foundation in software engineering, I specialize in turning complex technical requirements into intuitive, high-performance digital products.
           </p>
 
           {/* Tactile Buttons - Fades in at the end */}
