@@ -9,7 +9,7 @@ export default function Contact() {
     subject: '',
     message: '',
   });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -19,19 +19,44 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('sending');
-    
+    const payload = {
+      ...formData,
+      message: ` Subject : ${formData.subject}\n\n Message : ${formData.message}`,
+      access_key: 'ac800514-487a-4dad-b5c9-2899815f4aad',
+      from_name: formData.name,
+    };
     // Simulate API form routing
-    console.log('Dispatching dynamic packet:', formData);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    setStatus('success');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    try {
+      // 2. Transmit the packet to Web3Forms API
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        // Clear the form fields
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        console.error('Web3Forms Error:', result);
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Network Error:', error);
+      setStatus('error');
+    }
     setTimeout(() => setStatus('idle'), 4000);
   };
 
   return (
     <section id="contact" className="relative py-28 bg-zinc-950 text-zinc-100 px-6 border-t border-zinc-900 overflow-hidden">
-      
+
       {/* DECORATION: Blueprint Grid Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent)] opacity-70 pointer-events-none" />
 
@@ -43,7 +68,7 @@ export default function Contact() {
       <div className="absolute top-12 right-12 font-mono text-[10px] text-zinc-800 select-none">+</div >
 
       <div className="relative max-w-4xl mx-auto w-full z-10">
-        
+
         {/* Section Heading */}
         <div className="flex items-center gap-4 mb-16">
           <div className="space-y-1 shrink-0">
@@ -55,7 +80,7 @@ export default function Contact() {
 
         {/* Structural Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 relative">
-          
+
           {/* Left Side: Directory Details */}
           <div className="lg:col-span-2 space-y-4 font-mono text-xs">
             {[
@@ -63,8 +88,8 @@ export default function Contact() {
               { label: 'node_location', title: 'Location', value: 'Indonesia', link: null },
               { label: 'system_availability', title: 'Status', value: 'Available for core contracts', link: null },
             ].map((item, index) => (
-              <div 
-                key={item.title} 
+              <div
+                key={item.title}
                 className="p-4 rounded-lg bg-zinc-900/20 border border-zinc-800/80 backdrop-blur-sm space-y-1.5 hover:border-zinc-600 transition-all duration-300 relative group shadow-xl shadow-black/10"
               >
                 {/* DECORATION: Micro technical tag for alignment */}
