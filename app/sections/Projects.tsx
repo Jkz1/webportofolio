@@ -4,7 +4,7 @@ export default function Projects() {
       id: '01',
       title: 'Site Watcher Engine',
       description: 'Real-time uptime monitor routing continuous network status alerts. Implemented custom 1-minute tick intervals to execute live service verification.',
-      stack: ['Laravel', 'Next.js', 'TypeScript', 'Tailwind CSS', 'MySQL'],
+      stack: ['Go Lang', 'Next.js', 'TypeScript', 'Tailwind CSS', 'MySQL'],
       liveLink: '#',
       gitLink: '#',
     },
