@@ -4,9 +4,9 @@ export default function Projects() {
       id: '01',
       title: 'Site Watcher Engine',
       description: 'Real-time uptime monitor routing continuous network status alerts. Implemented custom 1-minute tick intervals to execute live service verification.',
-      stack: ['Go Lang', 'Next.js', 'TypeScript', 'Tailwind CSS', 'MySQL'],
+      stack: ['Go Lang', 'TypeScript', 'MySQL'],
       liveLink: '#',
-      gitLink: '#',
+      gitLink: 'https://github.com/Jkz1/site-watcher-backend',
     },
     {
       id: '02',
@@ -14,7 +14,7 @@ export default function Projects() {
       description: 'Comprehensive administrative dashboard tailored for small-scale cafe operations.',
       stack: ['Laravel', 'Filament', 'MySQL'],
       liveLink: '#',
-      gitLink: '#',
+      gitLink: 'https://github.com/Jkz1/my_cafe_backend',
     },
   ];
 
@@ -74,15 +74,15 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Action Syntax Links
+              {/* Action Syntax Links */}
               <div className="flex gap-5 font-mono text-xs">
-                <a 
+                {/* <a 
                   href={project.liveLink}
                   className="text-zinc-400 hover:text-white flex items-center gap-1 transition-colors group/btn"
                 >
                   <span className="text-zinc-600 group-hover/btn:text-zinc-400 transition-colors">→</span>
                   <span>live_demo()</span>
-                </a>
+                </a> */}
                 <a 
                   href={project.gitLink}
                   className="text-zinc-500 hover:text-zinc-300 flex items-center gap-1 transition-colors group/btn"
@@ -90,7 +90,7 @@ export default function Projects() {
                   <span className="text-zinc-700 group-hover/btn:text-zinc-500 transition-colors">→</span>
                   <span>source_code()</span>
                 </a>
-              </div> */}
+              </div>
             </div>
           ))}
         </div>
