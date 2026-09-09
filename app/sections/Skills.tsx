@@ -3,7 +3,7 @@ export default function Skills() {
     {
       index: '01',
       category: 'languages_runtime',
-      skills: ['Dart', 'PHP', 'TypeScript', 'JavaScript', 'HTML / CSS'],
+      skills: ['Dart', 'PHP', 'TypeScript', 'JavaScript', 'HTML / CSS', 'Go Lang', 'Python'],
     },
     {
       index: '02',
@@ -21,7 +21,7 @@ export default function Skills() {
     <section id="skills" className="relative py-28 bg-zinc-950 text-zinc-100 px-6 border-t border-zinc-900 overflow-hidden">
 
       {/* DECORATION: Blueprint Grid Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent)] opacity-70 pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent)] opacity-70 pointer-events-none" />
 
       {/* DECORATION: CAD Blueprint Corner Plus Markers */}
       <div className="absolute top-12 left-12 font-mono text-[10px] text-zinc-800 select-none">+</div >
@@ -35,7 +35,7 @@ export default function Skills() {
             <p className="text-[10px] font-mono uppercase tracking-widest text-zinc-600">02 / Capabilities</p>
             <h2 className="text-3xl font-bold tracking-tight text-white">Technical Skills</h2>
           </div>
-          <div className="h-[1px] w-full bg-gradient-to-r from-zinc-800 to-transparent" />
+          <div className="h-px w-full bg-linear-to-r from-zinc-800 to-transparent" />
         </div>
 
         {/* Dynamic Skill Grid Node Matrix */}

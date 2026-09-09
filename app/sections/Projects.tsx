@@ -10,6 +10,14 @@ export default function Projects() {
     },
     {
       id: '02',
+      title: 'Camera-Based Translation Mobile App',
+      description: 'Mobile application that leverages camera input to provide real-time translation of text in images.',
+      stack: ['Flutter', 'Dart', 'Google ML Kit'],
+      liveLink: '#',
+      gitLink: 'https://github.com/Jkz1/Camera_Based_Translation'
+    },
+    {
+      id: '03',
       title: 'Cafe Management API',
       description: 'Comprehensive administrative dashboard tailored for small-scale cafe operations.',
       stack: ['Laravel', 'Filament', 'MySQL'],
@@ -22,7 +30,7 @@ export default function Projects() {
     <section id="projects" className="relative py-28 bg-zinc-950 text-zinc-100 px-6 border-t border-zinc-900 overflow-hidden">
       
       {/* DECORATION: Blueprint Grid Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent)] opacity-70 pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent)] opacity-70 pointer-events-none" />
 
       <div className="relative max-w-4xl mx-auto w-full z-10">
         
@@ -32,7 +40,7 @@ export default function Projects() {
             <p className="text-[10px] font-mono uppercase tracking-widest text-zinc-600">03 / Production</p>
             <h2 className="text-3xl font-bold tracking-tight text-white">Selected Works</h2>
           </div>
-          <div className="h-[1px] w-full bg-gradient-to-r from-zinc-800 to-transparent" />
+          <div className="h-px w-full bg-linear-to-r from-zinc-800 to-transparent" />
         </div>
 
         {/* Vertical Structural Project Rows */}
