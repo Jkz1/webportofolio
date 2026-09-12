@@ -20,7 +20,7 @@ export const projects: Project[] = [
     liveLink: '#',
     gitLink: 'https://github.com/Jkz1/site-watcher-backend',
     images: [
-      './SiteWatcherAPI/1.png'
+      '/SiteWatcherAPI/1.png'
     ],
     features: [
       'Periodic website health checks executed concurrently using Go goroutines',
@@ -40,9 +40,8 @@ export const projects: Project[] = [
     liveLink: '#',
     gitLink: 'https://github.com/Jkz1/Camera_Based_Translation',
     images: [
-      './CameraBasedTranslation/1.png',
-      './CameraBasedTranslation/2.png',
-      './CameraBasedTranslation/3.png'
+      '/CameraTranslation/1.png',
+      '/CameraTranslation/2.png',
     ],
     features: [
       'Camera-based text detection and extraction using Tesseract OCR',
@@ -77,35 +76,59 @@ export const projects: Project[] = [
       'Role and permission management for staff and administrators'
     ]
   },
+  {
+    id: '04',
+    title: 'E-Commerce Platform',
+    description: 'Full-stack e-commerce platform built with React and Express.js, featuring secure authentication, online payment processing, and comprehensive admin management.',
+    fullDescription: 'A full-stack e-commerce application designed to handle the core workflow of an online store, from user authentication and product browsing to checkout and payment processing. The application uses React.js for the frontend and Express.js for the backend, with JWT-based authentication and securely hashed passwords for user accounts. An administrative dashboard provides centralized management of products, categories, and customer orders, while an integrated payment gateway handles online transactions. The project demonstrates a complete client-server architecture with dedicated functionality for both customers and administrators.',
+    stack: ['React.js', 'Express.js', 'Node.js', 'JWT', 'Payment Gateway'],
+    liveLink: '#',
+    gitLink: 'https://github.com/Jkz1/ECommerce',
+    images: [
+      '/Dinar/1.png',
+      '/Dinar/2.png',
+      '/Dinar/3.png',
+      '/Dinar/4.png',
+      '/Dinar/5.png',
+      '/Dinar/6.png',
+      '/Dinar/7.png',
+      '/Dinar/8.png',
+      '/Dinar/9.png',
+    ],
+    features: [
+      'User registration and login with JWT-based authentication',
+      'Secure password hashing for user credentials',
+      'Product browsing and shopping workflow',
+      'Integrated payment gateway for online transactions',
+      'Admin dashboard for product and category management',
+      'Admin order management and order status handling',
+      'RESTful backend API built with Express.js',
+      'React.js frontend for the customer shopping experience'
+    ]
+  },
+
 {
-  id: '04',
-  title: 'E-Commerce Platform',
-  description: 'Full-stack e-commerce platform built with React and Express.js, featuring secure authentication, online payment processing, and comprehensive admin management.',
-  fullDescription: 'A full-stack e-commerce application designed to handle the core workflow of an online store, from user authentication and product browsing to checkout and payment processing. The application uses React.js for the frontend and Express.js for the backend, with JWT-based authentication and securely hashed passwords for user accounts. An administrative dashboard provides centralized management of products, categories, and customer orders, while an integrated payment gateway handles online transactions. The project demonstrates a complete client-server architecture with dedicated functionality for both customers and administrators.',
-  stack: ['React.js', 'Express.js', 'Node.js', 'JWT', 'Payment Gateway'],
+  id: '05',
+  title: 'Developer Portfolio Website',
+  description: 'Responsive developer portfolio built with Next.js and Tailwind CSS, optimized for search engine visibility and showcasing technical projects.',
+  fullDescription: 'A modern, responsive portfolio website designed to showcase my projects, technical skills, and development experience. Built with Next.js to take advantage of its server-side rendering and SEO capabilities, helping project content remain accessible and discoverable by search engines. Tailwind CSS is used to build a consistent and responsive interface across different screen sizes, with dedicated project detail pages providing deeper insight into each application and its technical implementation.',
+  stack: ['Next.js', 'React.js', 'TypeScript', 'Tailwind CSS'],
   liveLink: '#',
-  gitLink: '#',
+  gitLink: '-',
   images: [
-    '/Dinar/1.png',
-    '/Dinar/2.png',
-    '/Dinar/3.png',
-    '/Dinar/4.png',
-    '/Dinar/5.png',
-    '/Dinar/6.png',
-    '/Dinar/7.png',
-    '/Dinar/8.png',
-    '/Dinar/9.png',
+    '/PortfolioWebsite/1.png',
+    '/PortfolioWebsite/2.png',
+    '/PortfolioWebsite/3.png'
   ],
   features: [
-    'User registration and login with JWT-based authentication',
-    'Secure password hashing for user credentials',
-    'Product browsing and shopping workflow',
-    'Integrated payment gateway for online transactions',
-    'Admin dashboard for product and category management',
-    'Admin order management and order status handling',
-    'RESTful backend API built with Express.js',
-    'React.js frontend for the customer shopping experience'
+    'SEO-friendly architecture powered by Next.js',
+    'Responsive design for desktop, tablet, and mobile devices',
+    'Project showcase with dedicated project detail pages',
+    'Reusable React components for consistent UI',
+    'Utility-first styling with Tailwind CSS',
+    'Technical project information including features and technology stacks'
   ]
 },
+
 
 ];
