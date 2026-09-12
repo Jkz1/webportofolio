@@ -47,7 +47,7 @@ export default function About() {
               {/* Inner Layout Photo Box */}
               <div className="w-full h-full rounded-md border border-dashed border-zinc-800 flex flex-col items-center justify-center font-mono text-[10px] text-zinc-600 space-y-2 select-none group-hover:border-zinc-700 group-hover:text-zinc-400 transition-all overflow-hidden">
                 <img
-                  src="/images/2.jpeg"
+                  src="/images/profile.jpeg"
                   alt="Hero Graphic"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
