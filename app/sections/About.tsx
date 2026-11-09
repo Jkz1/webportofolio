@@ -20,10 +20,10 @@ export default function About() {
         </div>
 
         {/* Layout Split */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 relative z-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 relative z-10 items-start">
 
           {/* Left Column: Focused Bio */}
-          <div className="md:col-span-3 space-y-6 text-zinc-400 text-base leading-relaxed relative">
+          <div className="lg:col-span-3 space-y-6 text-zinc-400 text-base leading-relaxed relative">
             <p>
               I am a full-stack developer dedicated to building efficient, reliable, and production-ready applications. My approach focuses on clean architecture, optimal system design, and creating intuitive, cross-platform interfaces
             </p>
@@ -35,24 +35,27 @@ export default function About() {
             </p>
           </div>
 
-          {/* Right Column: PORTRAIT PHOTO PLACEHOLDER */}
-          <div className="md:col-span-2 flex justify-center md:justify-end">
-            <div className="w-full max-w-[260px] aspect-[4/5] p-4 rounded-xl bg-zinc-900/20 border border-zinc-800/80 backdrop-blur-sm shadow-xl shadow-black/20 hover:border-zinc-600 transition-colors duration-300 relative group">
-
-              {/* Technical tag label top-right */}
-              <div className="absolute top-0 right-4 -translate-y-1/2 px-1.5 py-0.5 bg-zinc-900 border border-zinc-800 text-[9px] font-mono text-zinc-500 rounded tracking-tighter uppercase group-hover:border-zinc-600 group-hover:text-zinc-400 transition-colors">
-                sys_portrait
+          {/* Right Column: Technical Profile Summary */}
+          <div className="lg:col-span-2">
+            <div className="p-6 rounded-xl bg-zinc-900/20 border border-zinc-800/80 backdrop-blur-sm shadow-xl shadow-black/20">
+              <div className="flex items-center justify-between border-b border-zinc-800/80 pb-4 mb-5">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">system_profile</span>
+                <span className="text-[10px] font-mono text-emerald-500">online</span>
               </div>
-
-              {/* Inner Layout Photo Box */}
-              <div className="w-full h-full rounded-md border border-dashed border-zinc-800 flex flex-col items-center justify-center font-mono text-[10px] text-zinc-600 space-y-2 select-none group-hover:border-zinc-700 group-hover:text-zinc-400 transition-all overflow-hidden">
-                <img
-                  src="/images/profile.jpeg"
-                  alt="Hero Graphic"
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-
+              <dl className="space-y-4 font-mono text-xs">
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-zinc-600">{"// focus"}</dt>
+                  <dd className="text-zinc-300 text-right">full-stack systems</dd>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-zinc-600">{"// workflow"}</dt>
+                  <dd className="text-zinc-300 text-right">remote / freelance</dd>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-zinc-600">{"// location"}</dt>
+                  <dd className="text-zinc-300 text-right">Indonesia</dd>
+                </div>
+              </dl>
             </div>
           </div>
 

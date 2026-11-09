@@ -1,0 +1,396 @@
+ANALISIS PROJECT WEBPORTOFOLIO
+==============================
+
+Lokasi project
+--------------
+/home/jikky/Documents/Code/Personal/webportofolio
+
+Status repository
+-----------------
+- Branch: main
+- Working tree saat dianalisis: bersih
+- Repository Git tersedia.
+- Project merupakan portfolio personal berbasis Next.js.
+
+1. RINGKASAN EKSEKUTIF
+-----------------------
+Project ini adalah website portfolio personal dengan karakter visual dark, teknikal, dan bergaya terminal/blueprint. Aplikasi dibangun menggunakan Next.js App Router, React, TypeScript, Tailwind CSS v4, Framer Motion, dan lucide-react.
+
+Arsitektur deployment menggunakan static export Next.js. Halaman dikompilasi menjadi file HTML/CSS/JavaScript di folder out, kemudian disajikan oleh Nginx melalui multi-stage Docker build. Dengan konfigurasi saat ini, aplikasi tidak membutuhkan Node.js pada runtime production.
+
+Fitur utama:
+- Landing page portfolio satu halaman.
+- Section Hero, About, Skills, Projects, Contact.
+- Halaman detail untuk setiap project.
+- Static generation untuk route project dinamis.
+- Carousel gambar project dengan animasi.
+- Form kontak menggunakan Web3Forms API.
+- Vercel Analytics.
+- Docker image dengan builder Node.js dan runtime Nginx.
+
+2. TEKNOLOGI DAN DEPENDENCY
+---------------------------
+Runtime/dependency utama:
+- Next.js 16.2.9
+- React 19.2.4
+- React DOM 19.2.4
+- TypeScript 5.x
+- Tailwind CSS 4.x
+- @tailwindcss/postcss
+- Framer Motion 12.42.2
+- lucide-react 1.43.0
+- @vercel/analytics 2.0.1
+
+Tooling:
+- ESLint 9.x
+- eslint-config-next 16.2.9
+- Node.js 22 Alpine pada Docker builder
+- Nginx Alpine pada production runtime
+- npm dan package-lock.json
+
+Script package.json:
+- npm run dev: menjalankan development server Next.js.
+- npm run build: membuat production build dan static export.
+- npm run start: menyajikan folder out pada port 3005 menggunakan serve.
+- npm run lint: menjalankan ESLint.
+
+3. ARSITEKTUR APLIKASI
+----------------------
+
+3.1 Model rendering dan routing
+Project menggunakan Next.js App Router.
+
+Route yang terdeteksi:
+- /: landing page utama.
+- /projects/[id]: halaman detail project dinamis.
+- /projects/01 sampai /projects/05: hasil static generation dari data project.
+- /_not-found: halaman fallback Next.js.
+
+Konfigurasi penting di next.config.ts:
+- output: 'export'
+
+Konfigurasi ini membuat Next.js menghasilkan static site di folder out. Karena static export digunakan:
+- Tidak ada server-side runtime Next.js pada deployment utama.
+- Tidak tersedia API route Next.js pada runtime production.
+- Tidak digunakan server-side database access.
+- Dynamic route harus memiliki generateStaticParams, dan project ini sudah menyediakannya.
+
+3.2 Alur halaman utama
+app/page.tsx menyusun halaman utama dalam urutan:
+1. Navbar
+2. Hero
+3. About, dibungkus ScrollReveal
+4. Skills, dibungkus ScrollReveal
+5. Projects, dibungkus ScrollReveal
+6. Blog saat ini tidak dirender karena dikomentari
+7. Contact, dibungkus ScrollReveal
+8. Footer
+
+3.3 Alur data project
+Data project bersifat lokal dan terpusat pada lib/projects.ts.
+
+Interface Project mempunyai field:
+- id
+- title
+- description
+- fullDescription
+- stack
+- liveLink
+- gitLink
+- images
+- features
+
+Projects.tsx membaca array projects untuk membuat daftar kartu project.
+app/projects/[id]/page.tsx:
+- Membaca project berdasarkan parameter id.
+- Menghasilkan static params melalui generateStaticParams.
+- Memanggil notFound() jika id tidak ditemukan.
+- Menampilkan deskripsi, fitur, stack, carousel, dan link repository/deployment.
+
+3.4 Client dan server component
+Server component/default:
+- app/page.tsx
+- app/layout.tsx
+- section About, Skills, Projects, Blog, Footer
+- halaman detail project
+
+Client component dengan 'use client':
+- app/components/navbar.tsx: mendeteksi posisi scroll.
+- app/components/scrollReveal.tsx: animasi viewport melalui Framer Motion.
+- app/components/ProjectCarousel.tsx: state slide dan animasi carousel.
+- app/sections/Hero.tsx: efek typing dan state animasi.
+- app/sections/Contact.tsx: state form dan request ke Web3Forms.
+
+4. STRUKTUR FOLDER
+------------------
+
+Struktur source utama:
+
+.
+├── app
+│   ├── components
+│   │   ├── footer.tsx
+│   │   ├── navbar.tsx
+│   │   ├── ProjectCarousel.tsx
+│   │   └── scrollReveal.tsx
+│   ├── projects
+│   │   └── [id]
+│   │       └── page.tsx
+│   ├── sections
+│   │   ├── About.tsx
+│   │   ├── Blog.tsx
+│   │   ├── Contact.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Projects.tsx
+│   │   └── Skills.tsx
+│   ├── favicon.ico
+│   ├── faviconaaa.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── lib
+│   └── projects.ts
+├── public
+│   ├── CafeManagementAPI
+│   ├── CameraTranslation
+│   ├── Dinar
+│   ├── PortfolioWebsite
+│   ├── SiteWatcherAPI
+│   └── images
+├── .dockerignore
+├── .gitignore
+├── Dockerfile
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── package-lock.json
+├── postcss.config.mjs
+├── README.md
+└── tsconfig.json
+
+Folder/generated output yang juga ditemukan:
+- .next: cache dan hasil internal build Next.js.
+- out: hasil static export yang disajikan saat deployment.
+- node_modules: dependency ter-install.
+
+Folder .next, out, dan node_modules bukan source utama dan semestinya tidak diedit manual.
+
+5. ANALISIS FILE PENTING
+------------------------
+
+app/layout.tsx
+- Menetapkan metadata SEO dasar.
+- Memuat Geist dan Geist Mono melalui next/font/google.
+- Memuat globals.css.
+- Memasang Vercel Analytics.
+- Menetapkan bahasa dokumen ke en.
+
+app/page.tsx
+- Entry point landing page.
+- Menjadi komposer seluruh section portfolio.
+- Blog sudah di-import tetapi tidak digunakan karena render-nya dikomentari.
+
+app/sections/Hero.tsx
+- Client component.
+- Memiliki efek typing untuk nama dan jabatan.
+- Menampilkan CTA menuju project dan contact.
+- Menggunakan state isIgnited untuk memicu animasi lanjutan.
+
+app/sections/About.tsx
+- Menampilkan profil singkat dan foto dari /images/profile.jpeg.
+
+app/sections/Skills.tsx
+- Menyimpan daftar skill langsung di dalam component.
+- Skill dibagi menjadi languages_runtime, frameworks_libraries, dan database_tooling.
+
+app/sections/Projects.tsx
+- Menggunakan data terpusat dari lib/projects.ts.
+- Menampilkan project secara vertikal.
+- Menyediakan link ke detail project dan repository.
+
+app/sections/Contact.tsx
+- Client component dengan controlled form.
+- Mengirim data langsung dari browser ke https://api.web3forms.com/submit.
+- Menampilkan status sending dan success.
+- Status error hanya dicatat ke console dan belum ditampilkan ke user.
+
+app/components/ProjectCarousel.tsx
+- Carousel client-side berbasis state currentIndex.
+- Menggunakan AnimatePresence dan motion dari Framer Motion.
+- Mendukung tombol previous, next, dan indicator dot.
+
+lib/projects.ts
+- Single source of truth untuk lima project portfolio.
+- Menampung metadata project, stack, fitur, link, dan path gambar.
+
+Dockerfile
+- Stage builder: node:22-alpine.
+- Menyalin package manifest lalu menjalankan npm ci.
+- Menyalin source dan menjalankan npm run build.
+- Stage runtime: nginx:alpine.
+- Menyalin /app/out ke /usr/share/nginx/html.
+- Mengekspos port container 80.
+
+6. ARSITEKTUR DEPLOYMENT
+------------------------
+
+Pipeline deployment:
+
+Source code
+    |
+    v
+npm ci
+    |
+    v
+npm run build
+    |
+    v
+Next.js static export -> out/
+    |
+    v
+Nginx Alpine image
+    |
+    v
+Static HTML/CSS/JS dan asset disajikan melalui port 80
+
+Command Docker yang sesuai:
+- Build image:
+  docker build -t webportofolio .
+- Run container:
+  docker run --rm -p 3005:80 webportofolio
+- Akses aplikasi:
+  http://localhost:3005
+
+Catatan: npm run start menggunakan serve dan port 3005, sedangkan Docker menggunakan Nginx pada port container 80. Port host dapat dipetakan ke 3005 menggunakan -p 3005:80.
+
+7. ASSET DAN UKURAN PROJECT
+---------------------------
+
+Hasil inspeksi filesystem:
+- Source app/lib: 17 file.
+- Source TypeScript/TSX/CSS: sekitar 1.217 baris.
+- Asset pada public: 20 file.
+- Ukuran public: sekitar 4,9 MB.
+- Ukuran out: sekitar 7,3 MB.
+- Ukuran .next: sekitar 12 MB.
+
+Asset gambar dibagi berdasarkan nama project:
+- CafeManagementAPI: 4 gambar.
+- CameraTranslation: 2 gambar.
+- Dinar: 9 gambar.
+- PortfolioWebsite: 3 gambar.
+- SiteWatcherAPI: 1 gambar.
+- images/profile.jpeg: foto profil.
+
+8. HASIL VERIFIKASI
+-------------------
+
+Status git:
+- Working tree bersih.
+
+npm run build:
+- BERHASIL.
+- Next.js berhasil melakukan compile.
+- TypeScript check berhasil.
+- Static page generation berhasil untuk 9 halaman.
+- Route project berhasil diprerender sebagai SSG.
+
+npm run lint:
+- GAGAL karena 3 error ESLint.
+- Terdapat juga 4 warning.
+
+Error lint yang ditemukan:
+1. app/sections/Blog.tsx: komentar // log_volume_index dianggap sebagai text node JSX.
+2. app/sections/Contact.tsx: komentar // stream_io_ready dianggap sebagai text node JSX.
+3. app/sections/Skills.tsx: komentar // dianggap sebagai text node JSX.
+
+Warning lint yang ditemukan:
+1. app/components/ProjectCarousel.tsx: import Image tidak digunakan.
+2. app/components/ProjectCarousel.tsx: penggunaan tag img biasa.
+3. app/page.tsx: import Blog tidak digunakan.
+4. app/sections/About.tsx: penggunaan tag img biasa.
+
+Kesimpulan verifikasi:
+- Build production saat ini berfungsi.
+- Quality gate lint belum bersih dan perlu diperbaiki sebelum CI/CD yang mewajibkan lint dapat dianggap sehat.
+
+Catatan: command pygount tidak tersedia di environment saat analisis, sehingga breakdown LOC berbasis pygount tidak dapat dijalankan. Pengukuran source line dilakukan menggunakan find dan wc -l.
+
+9. TEMUAN TEKNIS DAN RISIKO
+---------------------------
+
+Prioritas tinggi:
+
+1. Access key Web3Forms berada langsung di source client
+   Contact.tsx mengirim access_key secara hardcoded dari browser. Nilai ini tidak ditulis ulang di laporan demi menghindari penyebaran credential/token.
+   Risiko:
+   - Dapat terlihat oleh siapa pun melalui source bundle atau browser DevTools.
+   - Jika key tersebut bersifat sensitif atau dapat disalahgunakan, perlu segera dirotasi.
+   - Pertimbangkan backend/proxy atau mekanisme server-side yang sesuai. Untuk static export, proxy dapat ditempatkan di platform hosting atau service terpisah.
+
+2. Tidak ada konfigurasi Nginx custom untuk fallback/routing
+   Static export saat ini kemungkinan berjalan baik untuk URL hasil export langsung, tetapi konfigurasi Nginx default belum secara eksplisit menangani fallback route atau SPA-style routing. Karena project memiliki file HTML hasil export untuk project detail, risikonya terbatas, tetapi deep-link behavior tetap perlu diuji pada hosting target.
+
+Prioritas menengah:
+
+3. Error form tidak terlihat jelas oleh user
+   Contact.tsx mengubah status ke error tetapi hanya menulis console.error. Tambahkan pesan error yang dapat dilihat user.
+
+4. Aksesibilitas carousel dapat ditingkatkan
+   - Komponen mengimpor Image namun menggunakan img biasa.
+   - Gambar memakai object-fill yang berpotensi merusak rasio gambar.
+   - Belum terlihat dukungan keyboard/gesture yang lengkap.
+   - Alt text masih generik berupa Slide N.
+
+5. Navbar mobile belum memiliki menu aktif
+   Elemen [menu_sys] hanya indikator visual dan bukan tombol/menu yang dapat digunakan. Link navigasi disembunyikan pada ukuran kecil.
+
+6. Blog belum menjadi fitur aktif
+   Blog.tsx tersedia dan memiliki id blog, tetapi tidak dirender pada halaman utama. Link /blog juga belum memiliki route page.tsx yang terlihat pada source route.
+
+7. README masih template create-next-app
+   README belum menjelaskan project portfolio, command Docker, static export, struktur folder, maupun deployment.
+
+8. Data konten masih berada langsung di component
+   Data skill, metadata contact, social link, dan blog masih hardcoded pada component. Untuk project kecil ini masih wajar, tetapi pemisahan content/config akan mempermudah pemeliharaan.
+
+9. Metadata dan bahasa dokumen belum sepenuhnya konsisten
+   Metadata menyasar portfolio personal, tetapi html lang masih en. Jika target utama adalah audiens Indonesia, pertimbangkan konten bilingual atau lang yang sesuai.
+
+10. Tidak ada test otomatis
+   Saat ini tidak terlihat unit test, integration test, atau end-to-end test. Build dan lint menjadi verifikasi utama.
+
+10. KELEBIHAN ARSITEKTUR
+------------------------
+- Struktur App Router cukup jelas dan mudah dipahami.
+- Data project sudah dipusatkan dalam interface dan array typed.
+- Dynamic project detail telah memakai generateStaticParams sehingga cocok untuk static export.
+- Multi-stage Docker build mengurangi kebutuhan runtime Node.js.
+- npm ci menggunakan lockfile sehingga instalasi dependency lebih reproducible.
+- Component interaktif dipisahkan dari server component.
+- UI component relatif modular: navbar, footer, carousel, dan scroll reveal terpisah.
+- Static export cocok untuk hosting sederhana, CDN, Nginx, atau object storage.
+
+11. REKOMENDASI PERBAIKAN
+-------------------------
+Urutan rekomendasi:
+
+1. Perbaiki tiga error ESLint pada Blog.tsx, Contact.tsx, dan Skills.tsx.
+2. Hapus import Blog yang tidak digunakan atau aktifkan section Blog.
+3. Ganti img dengan next/image bila kompatibel dengan konfigurasi static export, atau hapus import Image yang tidak digunakan.
+4. Tinjau dan rotasi access key Web3Forms yang terlanjur berada di client source.
+5. Tambahkan UI error state pada form contact.
+6. Tambahkan mobile navigation yang benar atau hapus indikator menu palsu.
+7. Tambahkan konfigurasi Nginx bila hosting membutuhkan fallback route/deep-link handling.
+8. Perbarui README dengan setup lokal, build, Docker, route, dan struktur project.
+9. Tambahkan test minimal untuk project lookup, route generation, dan form state atau lakukan smoke test browser.
+10. Pertimbangkan memindahkan content/config non-UI ke folder data/config agar component lebih fokus pada presentasi.
+
+12. KESIMPULAN
+--------------
+Project ini adalah portfolio frontend statis yang arsitekturnya sederhana, sesuai dengan skala aplikasi, dan sudah berhasil dibuild menjadi static output. Jalur deployment Docker juga sudah menggunakan pola yang tepat: Node.js hanya dipakai saat build, sedangkan Nginx dipakai untuk menyajikan hasil export.
+
+Masalah utama saat ini bukan pada build, melainkan pada kebersihan lint, beberapa detail UX/accessibility, route Blog yang belum selesai, dan access key Web3Forms yang dikirim langsung dari client. Setelah tiga lint error diperbaiki dan access key ditinjau/dirotasi bila perlu, project akan lebih siap untuk deployment production.
+
+Dokumen ini dibuat berdasarkan inspeksi source, konfigurasi, struktur folder, asset, status Git, npm run lint, dan npm run build.
