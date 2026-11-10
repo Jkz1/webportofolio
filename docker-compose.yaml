@@ -1,0 +1,13 @@
+name: jikky-portfolio
+
+services:
+  portfolio:
+    container_name: portfolio-jikky
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3006:80"
+    environment:
+      NODE_ENV: production
