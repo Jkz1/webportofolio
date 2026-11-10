@@ -49,7 +49,7 @@ export default function About() {
                 </div>
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-zinc-600">{"// workflow"}</dt>
-                  <dd className="text-zinc-300 text-right">remote / freelance</dd>
+                  <dd className="text-zinc-300 text-right">remote</dd>
                 </div>
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-zinc-600">{"// location"}</dt>
